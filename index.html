@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordion</title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+    .section-btn {
+        background-color: rgb(238, 238, 238);
+        padding: 14px;
+        width: 100%;
+        color: rgb(68, 68, 68);
+        border: none;
+        text-align: left;
+        transition: 0.5s;
+    }
+    .section-btn:hover {
+        cursor: pointer;
+        background-color: rgba(68, 68, 68, 0.4);
+    }
+    .section-btn::after {
+        content: '\002B';
+        float: right;
+        color: #777;
+        font-size: 16px;
+    }
+    .active::after {
+        content: '\2212';
+    }
+    .panel {
+        display: none;
+        padding: 0 14px;
+    }
+</style>
+<body>
+    <button class="section-btn">Section 1</button>
+    <p class="panel">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
+        sed do eiusmod tempor incididunt ut labore et dolore 
+        magna aliqua. Ut enim ad minim veniam, quis nostrud 
+        exercitation ullamco laboris nisi ut aliquip ex ea 
+        commodo consequat.
+    </p>
+    <button class="section-btn">Section 2</button>
+    <p class="panel">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
+        sed do eiusmod tempor incididunt ut labore et dolore 
+        magna aliqua. Ut enim ad minim veniam, quis nostrud 
+        exercitation ullamco laboris nisi ut aliquip ex ea 
+        commodo consequat.
+    </p>
+    <button class="section-btn">Section 3</button>
+    <p class="panel">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
+        sed do eiusmod tempor incididunt ut labore et dolore 
+        magna aliqua. Ut enim ad minim veniam, quis nostrud 
+        exercitation ullamco laboris nisi ut aliquip ex ea 
+        commodo consequat.
+    </p>
+</body>
+</html>
+<script>
+    const sectionBtn = document.querySelectorAll(".section-btn")
+    const panel = document.querySelectorAll(".panel")
+    for (let i = 0, j = 0; i < sectionBtn.length, j < panel.length; i++, j++) {
+        sectionBtn[i].addEventListener("click", function() {
+            this.classList.toggle("active")
+            if (panel[j].style.display === "block") {
+                panel[j].style.display = "none"
+            } else {
+                panel[j].style.display = "block"
+            }
+        })
+    }
+</script>
